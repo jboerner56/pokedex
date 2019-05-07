@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import initialState from './base.json'
+import initialCards from './base.json'
 import { createStore, combineReducers } from 'redux';
 
 // console.log(initialState);
@@ -23,8 +23,9 @@ const VISIBILITY_ALL = 'all';
 const VISIBILITY_CAUGHT = 'caught';
 const VISIBILITY_UNCAUGHT = 'uncaught';
 
-const initiatState = {
-    ...initialState,
+const initialState = {
+    ...initialCards, // this spreads the "cards: [...]" into this spot in initialState
+    // cards : initialCards  this line is the equivalent if ...initialCards 
     visibilityFilter: VISIBILITY_ALL
 
 }
@@ -90,10 +91,10 @@ function cards(state=initialState.cards, action={type: ''}) {
             ;
             // whatever is returned by the reducer is automatically used by the store as the new version of state.
             return newState;
-        break;
+        //break;
         default:
             return state;
-        break;
+        //break;
     }
 }
 // visibility reducer manages a string
@@ -104,20 +105,20 @@ function visibility(state = initialState.visibilityFilter, action={type: ''}) {
         // set visibility to all 
             return VISIBILITY_ALL;
             
-        break;
+        //break;
         case ACTION_VISIBILITY_CAUGHT:
         // set vis to caught
             return VISIBILITY_CAUGHT;
             
-        break;
+        //break;
         case ACTION_VISIBILITY_UNCAUGHT:
         // set vis to uncaught
         return VISIBILITY_UNCAUGHT;
         
-        break;
+        //break;
         default: 
             return state;
-        break;
+        //break;
     }
 }
 const rootReducer = combineReducers({
