@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import initialState from './base.json'
+import { createStore } from 'redux';
 console.log(initialState);
 
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -33,6 +34,7 @@ function catchCard(id) {
         }
     }
 }
+window.catchCard = catchCard;
 // ===============================================
 // Reducer
 function cards(state=initialState, action={type: ''}) {
@@ -49,3 +51,5 @@ function cards(state=initialState, action={type: ''}) {
 }
 // ===============================================
 // Store
+const store = createStore(cards);
+window.store = store;
