@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import PokeList from './containers/PokeListContainer';
+import VisibilityButton from './components/VisibilityButton';
 // if styling needs to be worked on
 // import PokeList from './'
 function App() {
